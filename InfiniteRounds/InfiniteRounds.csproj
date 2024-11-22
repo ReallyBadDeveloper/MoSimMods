@@ -1,0 +1,340 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net46</TargetFramework>
+    <AssemblyName>InfiniteRounds</AssemblyName>
+    <Product>My first plugin</Product>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+      https://nuget.samboy.dev/v3/index.json
+    </RestoreAdditionalProjectSources>
+    <RootNamespace>InfiniteRounds</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="UnityEngine.Modules" Version="5.6.0" IncludeAssets="compile" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Assembly-CSharp-publicized.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Grpc.Core">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Grpc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\netstandard.dll</HintPath>
+    </Reference>
+    <Reference Include="PathCreator">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\PathCreator.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Barracuda">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Barracuda.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Barracuda.BurstBLAS">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Barracuda.BurstBLAS.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Barracuda.ONNX">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Barracuda.ONNX.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem.ForUI">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.InputSystem.ForUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem.RebindingUI">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.InputSystem.RebindingUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ML-Agents">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.ML-Agents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ML-Agents.CommunicatorObjects">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.ML-Agents.CommunicatorObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Netcode.Components">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Netcode.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Netcode.Runtime">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Netcode.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Networking.Transport">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Networking.Transport.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Splines">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.Splines.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CommandStateObserverModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.CommandStateObserverModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ContentLoadModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.ContentLoadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.DSPGraphModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GIModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.GIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GraphToolsFoundationModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.GraphToolsFoundationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HierarchyCoreModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.HierarchyCoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.HotReloadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputForUIModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.InputForUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.LocalizationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.MarshallingModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.MarshallingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.MultiplayerModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.MultiplayerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.NVIDIAModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.NVIDIAModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ProfilerModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.ProfilerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PropertiesModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.PropertiesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.StreamingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.SubstanceModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.SubsystemsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreFontEngineModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreTextEngineModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.TLSModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UmbraModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UnityCurlModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VirtualTexturingModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.VirtualTexturingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>..\..\..\Downloads\MoSim v3.0.0 PreRelease\MoSim v3.0.0 PreRelease\Builds\Windows\Build\MoSimulator_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
